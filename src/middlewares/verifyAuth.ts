@@ -47,8 +47,14 @@ export const verifyAuth = async (c: Context, next: Next) => {
       }
     }
 
-    return c.json({ message: "Unauthorized - No valid token provided" }, 401);
+    return c.json(
+      { success: false, message: "Unauthorized - No valid token provided" },
+      401
+    );
   } catch (error) {
-    return c.json({ message: "Unauthorized - Invalid token" }, 401);
+    return c.json(
+      { success: false, message: "Unauthorized - Invalid token" },
+      401
+    );
   }
 };
